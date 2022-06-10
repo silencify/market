@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+    marketdb:
+        image: mysql:5.7
+        volumes:
+            - market-db:/var/lib/mysql
+        restart: "always"
+        ports:
+            - "3306:3306"
+        networks:
+            - marketnet
+        environment:
+            MYSQL_ROOT_PASSWORD: "root@123"
+            MYSQL_DATABASE: "market"
+            MYSQL_USER: "market"
+            MYSQL_PASSWORD: "market@123"
+    backend:
+        build:
+            context: .
+            dockerfile: ./backend/Dockerfile
+        volumes:
+            - ./backend:/backend
+        ports:
+            - "9090:9000"
+        restart: "always"
+        networks:
+            - marketnet
+        command: "npm start"
+        depends_on:
+            - marketdb
+    frontend:
+        build:
+            context: .
+            dockerfile: ./frontend/Dockerfile
+        volumes:
+            - ./frontend:/frontend
+        ports:
+            - "9001:9001"
+        restart: "always"
+        networks:
+            - marketnet
+        command: "npm start"
+networks:
+    marketnet:
+volumes:
+    market-db:
+    
