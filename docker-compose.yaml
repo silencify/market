@@ -17,10 +17,11 @@ services:
             MYSQL_PASSWORD: "market@123"
     backend:
         build:
-            context: .
-            dockerfile: ./backend/Dockerfile
+            context: ./backend
+            dockerfile: ./Dockerfile
         volumes:
             - ./backend:/backend
+            - /backend/node_modules
         ports:
             - "9090:9000"
         restart: "always"
@@ -31,10 +32,11 @@ services:
             - marketdb
     frontend:
         build:
-            context: .
-            dockerfile: ./frontend/Dockerfile
+            context: ./frontend
+            dockerfile: ./Dockerfile
         volumes:
             - ./frontend:/frontend
+            - /frontend/node_modules
         ports:
             - "9001:9001"
         restart: "always"
