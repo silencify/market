@@ -27,7 +27,7 @@ services:
         restart: "always"
         networks:
             - marketnet
-        command: "npm start"
+        command: "npm run dev:start"
         depends_on:
             - marketdb
     frontend:
