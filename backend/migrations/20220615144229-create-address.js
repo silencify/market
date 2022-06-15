@@ -9,13 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       street: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       city: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       country: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -27,6 +30,7 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id'
@@ -34,6 +38,7 @@ module.exports = {
       },
       companyId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Companies',
           key: 'id'

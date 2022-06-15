@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ProductCategory.init({
-    
   }, {
     sequelize,
     modelName: 'ProductCategory',

@@ -9,13 +9,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       username: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       modifiedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -27,6 +34,7 @@ module.exports = {
       },
       companyId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Companies',
           key: 'id'
@@ -34,6 +42,7 @@ module.exports = {
       },
       roleId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Roles',
           key: 'id'
