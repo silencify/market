@@ -2,9 +2,11 @@
     "compilerOptions": {
         "module": "commonJS",
         "target": "es6",
+        "strict": false,
         "sourceMap": true,
         "outDir": "dist",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "resolveJsonModule": true
     },
     "lib": ["es2015"]
 }

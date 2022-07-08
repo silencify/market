@@ -6,6 +6,6 @@ COPY package*.json ./
 
 RUN npm install
 
-EXPOSE 9000
+EXPOSE 9090
 
 CMD ['npm', 'run', 'dev:start']
