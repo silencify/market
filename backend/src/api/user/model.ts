@@ -1,32 +1,28 @@
 import db from '../../../config/db';
+import { CreateUser, GetUser } from './userInterface';
 
-interface Create {
-    username: string
-    email: string
-    password: string
-    companyId: number
-    roleId: number
-}
-
-const get = (): Promise<string> => new Promise(async (resolve, reject) => {
+const get = (data: GetUser): Promise<Array<CreateUser>> => new Promise(async (resolve, reject) => {
     try {
-        
+        const { email }  = data;
+        const query: string = `SELECT * from Users WHERE email='${email}'`;
+        const [ results ]: Array<Array<CreateUser>> = await db.query(query);
+        resolve(results);
     } catch (err) {
-        console.log({err})
+        reject(err);
     }
 })
 
-const create = (data: Create): Promise<Object> => new Promise(async (resolve, reject) => {
+const create = (data: CreateUser): Promise<number> => new Promise(async (resolve, reject) => {
     try {
         const { username, email, password, companyId, roleId } = data;
         const query: string = `
             INSERT INTO Users (username, email, password, companyId, roleId)
                 VALUES ('${username}', '${email}', '${password}', '${companyId}', '${roleId}')
         `;
-        const response: Array<number> = await db.query(query)
-        resolve(response)
+        const [ results ]: Array<number> = await db.query(query);
+        resolve(results);
     } catch (err) {
-        reject(err)
+        reject(err);
     }
 })
 
