@@ -4,6 +4,6 @@
 
 *.session.vim
 *.swp
-
-
+.env
+*.map
 
