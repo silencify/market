@@ -2,9 +2,9 @@
     "compilerOptions": {
         "module": "commonJS",
         "target": "es6",
-        "strict": false,
-        "sourceMap": true,
-        "outDir": "dist",
+        "strict": true,
+        "sourceMap": false,
+        "outDir": "./dist",
         "esModuleInterop": true,
         "resolveJsonModule": true
     },
