@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken';
 import statusCodes from '../../constant/statusCodes';
 import { get, create } from './model';
 import { CreateUser, UserResponse, Err } from './userInterface';
+import { RoleResponse } from '../role/roleInterface';
+import { get as getRole } from '../role/model';
 
 const getUser = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -17,13 +19,20 @@ const getUser = async (req: Request, res: Response): Promise<void> => {
 
 const createUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { username, email, password, companyId, roleId } = req.body;
+        const { username, email, password, companyId, roleId: roleIdentity } = req.body;
         const userResponse: Array<CreateUser> = await get({email})
 
         if (userResponse.length) {
             throw new Error('User Exist')
         }
 
+        let defaultRoleId: number | null = null;
+        if (!roleIdentity) {
+            const role: Array<RoleResponse> = await getRole({role: 'admin'})
+            defaultRoleId = role[0].id;
+        }
+
+        const roleId = roleIdentity ? roleIdentity : defaultRoleId;
         const saltRounds: number = Math.floor(Math.random() * 10 + 1);
         const hashPassword: string = bcrypt.hashSync(password, saltRounds);
         const response: number = await create({username, email, password: hashPassword, companyId, roleId});

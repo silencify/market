@@ -3,7 +3,7 @@ export interface CreateUser {
     email: string
     password: string
     companyId: number
-    roleId: number
+    roleId?: number
 }
 
 export interface GetUser {

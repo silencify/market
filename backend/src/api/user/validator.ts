@@ -9,7 +9,7 @@ const validateCreateUser = async (req: Request, res: Response, next: NextFunctio
         email: Joi.string().email().required().error(() => new Error('Invalid email')),
         password: Joi.string().required().error(() => new Error('Invalid password')),
         companyId: Joi.number().integer().strict().required().error(() => new Error('Invalid company id')),
-        roleId: Joi.number().required().error(() => new Error('Invalid role id')),
+        roleId: Joi.number().error(() => new Error('Invalid role id')),
     }) 
     
     try {
