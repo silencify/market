@@ -1,13 +1,14 @@
-import express from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
-require('dotenv').config();
-import db from '../config/db';
+import { json } from 'body-parser';
+import 'dotenv/config';
 import route from './route';
 
-const app = express();
-const port = 9090;
+const app: Express = express();
+const port: number = 9090;
 
 app.use(cors());
+app.use(json());
 
 app.use(route);
 
