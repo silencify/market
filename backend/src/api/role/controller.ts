@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import statusCodes from '../../constant/statusCodes';
-import {Err} from '../user/userInterface';
+import {Err} from './interface';
 import { get } from './model';
 
 const getRole = async (req: Request, res: Response): Promise<void> => {

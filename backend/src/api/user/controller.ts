@@ -3,9 +3,9 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import statusCodes from '../../constant/statusCodes';
 import { get, create } from './model';
-import { CreateUser, UserResponse, Err } from './userInterface';
-import { RoleResponse } from '../role/roleInterface';
-import { get as getRole } from '../role/model';
+import { CreateUser, UserResponse, Err } from './interface';
+import { RoleResponse } from '../role/exposed/exposedInterface';
+import { get as getRole } from '../role/exposed/exposedFunction';
 
 const getUser = async (req: Request, res: Response): Promise<void> => {
     try {

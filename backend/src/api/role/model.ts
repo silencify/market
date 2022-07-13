@@ -1,13 +1,5 @@
 import db from "../../../config/db";
-
-interface GetRole {
-    role: string
-}
-
-interface RoleResponse {
-    id: number
-    role: string
-}
+import { GetRole, RoleResponse } from './interface';
 
 const get = (data: GetRole): Promise<Array<RoleResponse>> => new Promise(async (resolve, reject) => {
     try {

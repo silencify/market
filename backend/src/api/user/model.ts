@@ -1,5 +1,5 @@
 import db from '../../../config/db';
-import { CreateUser, GetUser } from './userInterface';
+import { CreateUser, GetUser } from './interface';
 
 const get = (data: GetUser): Promise<Array<CreateUser>> => new Promise(async (resolve, reject) => {
     try {

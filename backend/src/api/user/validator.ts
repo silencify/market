@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Joi from 'joi';
 import status from '../../constant/statusCodes';
-import { Err } from '../user/userInterface'
+import { Err } from './interface';
 
 const validateCreateUser = async (req: Request, res: Response, next: NextFunction): Promise<Response | undefined> => {
     const schema = Joi.object({
