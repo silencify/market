@@ -23,7 +23,6 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       productId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references : {
           model: 'Products',
@@ -31,7 +30,6 @@ module.exports = {
         }
       },
       companyId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Companies',
@@ -39,7 +37,6 @@ module.exports = {
         }
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
